@@ -1,0 +1,38 @@
+CREATE TABLE groceries (
+    item_name VARCHAR(100),
+    price INT,
+    quantity INT,
+    img VARCHAR(255)
+);
+
+INSERT INTO groceries (item_name, price, quantity, img) VALUES
+('Apples', 3, 10, 'https://upload.wikimedia.org/wikipedia/commons/1/15/Red_Apple.jpg'),
+('Bananas', 2, 12, 'https://upload.wikimedia.org/wikipedia/commons/8/8a/Banana-Single.jpg'),
+('Milk', 5, 4, 'https://upload.wikimedia.org/wikipedia/commons/5/57/Milk_glass.jpg'),
+('Bread', 4, 6, 'https://upload.wikimedia.org/wikipedia/commons/d/d3/White-Bread.jpg'),
+('Eggs', 7, 3, 'https://upload.wikimedia.org/wikipedia/commons/7/7b/Chicken_eggs.jpg'),
+('Cheese', 8, 5, 'https://upload.wikimedia.org/wikipedia/commons/5/5d/Cheddar_cheese.jpg'),
+('Tomatoes', 3, 8, 'https://upload.wikimedia.org/wikipedia/commons/8/88/Bright_red_tomato_and_cross_section02.jpg'),
+('Cucumbers', 2, 7, 'https://upload.wikimedia.org/wikipedia/commons/6/6f/Cucumber_with_cross_section.jpg'),
+('Potatoes', 4, 10, 'https://upload.wikimedia.org/wikipedia/commons/6/60/Potato_Solanum_tuberosum.jpg'),
+('Carrots', 3, 9, 'https://upload.wikimedia.org/wikipedia/commons/3/30/Carrot_Whole.jpg'),
+('Chicken Breast', 10, 2, 'https://upload.wikimedia.org/wikipedia/commons/5/58/Raw_Chicken_Breast.png'),
+('Beef Steak', 15, 1, 'https://upload.wikimedia.org/wikipedia/commons/1/17/Raw_beef_steak.png'),
+('Yogurt', 4, 6, 'https://upload.wikimedia.org/wikipedia/commons/0/00/Greek_yogurt.jpg'),
+('Rice', 6, 5, 'https://upload.wikimedia.org/wikipedia/commons/6/6f/Cooked_Rice.jpg'),
+('Pasta', 5, 4, 'https://upload.wikimedia.org/wikipedia/commons/6/6d/Cooked_spaghetti.jpg'),
+('Orange Juice', 6, 3, 'https://upload.wikimedia.org/wikipedia/commons/5/57/Glass_of_orange_juice.jpg'),
+('Butter', 5, 2, 'https://upload.wikimedia.org/wikipedia/commons/0/0b/Butter.jpg'),
+('Mushrooms', 4, 4, 'https://upload.wikimedia.org/wikipedia/commons/1/11/Mushrooms_white.jpg'),
+('Onions', 2, 10, 'https://upload.wikimedia.org/wikipedia/commons/7/7b/Onion_on_White.JPG'),
+('Lettuce', 3, 3, 'https://upload.wikimedia.org/wikipedia/commons/0/03/Head_of_lettuce.jpg'),
+('Bell Peppers', 4, 4, 'https://upload.wikimedia.org/wikipedia/commons/5/5f/Bell_peppers.jpg'),
+('Tuna Can', 5, 3, 'https://upload.wikimedia.org/wikipedia/commons/e/e5/Tuna_can_open.jpg'),
+('Cereal', 7, 2, 'https://upload.wikimedia.org/wikipedia/commons/f/fc/Cereal.jpg'),
+('Green Beans', 3, 7, 'https://upload.wikimedia.org/wikipedia/commons/e/e4/Green_Beans.jpg'),
+('Strawberries', 6, 2, 'https://upload.wikimedia.org/wikipedia/commons/2/29/PerfectStrawberry.jpg'),
+('Grapes', 5, 3, 'https://upload.wikimedia.org/wikipedia/commons/1/14/Red_Grapes_01.jpg'),
+('Watermelon', 10, 1, 'https://upload.wikimedia.org/wikipedia/commons/e/eb/Watermelon_cross_BNC.jpg'),
+('Tofu', 4, 4, 'https://upload.wikimedia.org/wikipedia/commons/4/44/Tofu_01.jpg'),
+('Spinach', 3, 5, 'https://upload.wikimedia.org/wikipedia/commons/5/54/Spinach_leaves.jpg'),
+('Avocado', 5, 2, 'https://upload.wikimedia.org/wikipedia/commons/f/f1/Avocado_with_cross_section_edit.jpg');

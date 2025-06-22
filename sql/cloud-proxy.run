@@ -1,0 +1,1 @@
+cloud-sql-proxy --port 3306 --credentials-file=./creds/mysql-key.json georgef-sandbox:us-central1:sql-instance
