@@ -9,8 +9,8 @@ CORS(app, origins=["http://localhost:3000"])  # 👈 enable CORS for all routes
 # MySQL DB config
 db_config = {
     'host': '127.0.0.1',
-    'user': 'admin',
-    'password': 'adminpassword',
+    'user': 'root',
+    'password': 'root',
     'database': 'exampledb',
     'port': 3306
 }
