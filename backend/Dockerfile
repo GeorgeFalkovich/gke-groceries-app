@@ -31,3 +31,5 @@ CMD ["python", "api.py"]
 
 # docker build -t myapp .
 # docker run --rm -it -p 5001:5000 myapp
+
+# docker tag my-image:latest REGION-docker.pkg.dev/PROJECT-ID/REPOSITORY/my-image:latest
