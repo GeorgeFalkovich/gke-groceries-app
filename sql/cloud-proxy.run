@@ -1,5 +1,9 @@
 cloud-sql-proxy --port 3306 --credentials-file=./creds/mysql-key.json georgef-sandbox:us-central1:sql-instance
 
+windows:
+cloud-sql-proxy.exe --port 3306 --credentials-file=../creds/mysql-key.json georgef-sandbox:us-central1:sql-instance
+cloud-sql-proxy.exe georgef-sandbox:us-central1:sql-instance --credentials-file=../creds/mysql-key.json
+
 
 assign ksa + gcp sa
 https://cloud.google.com/sql/docs/mysql/connect-kubernetes-engine#workload-identity
