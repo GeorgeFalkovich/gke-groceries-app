@@ -1,20 +1,18 @@
 from flask import Flask, request, jsonify
 import mysql.connector
 from flask_cors import CORS  # 👈 import
-import os
 
 
 app = Flask(__name__)
-# 👈 enable CORS for all routes
-CORS(app, origins=[os.environ.get('CORS_ORIGIN', "http://localhost:3000")])
+CORS(app, origins=["http://localhost:3000"])  # 👈 enable CORS for all routes
 
 # MySQL DB config
 db_config = {
-    'host': os.environ.get('DB_HOST', '127.0.0.1'),
-    'user': os.environ.get('DB_USER', 'root'),
-    'password': os.environ.get('DB_PASSWORD', 'root'),
-    'database': os.environ.get('DB_NAME', 'exampledb'),
-    'port': int(os.environ.get('DB_PORT', 3306))
+    'host': '127.0.0.1',
+    'user': 'root',
+    'password': 'root',
+    'database': 'exampledb',
+    'port': 3306
 }
 
 # GET all groceries

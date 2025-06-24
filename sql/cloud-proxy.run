@@ -1,1 +1,13 @@
 cloud-sql-proxy --port 3306 --credentials-file=./creds/mysql-key.json georgef-sandbox:us-central1:sql-instance
+
+
+assign ksa + gcp sa
+https://cloud.google.com/sql/docs/mysql/connect-kubernetes-engine#workload-identity
+
+kubectl create sa sql-ksa
+
+gcloud iam service-accounts add-iam-policy-binding \
+--role="roles/iam.workloadIdentityUser" \
+--member="serviceAccount:project-id.svc.id.goog[default/sql-ksa]" \
+cliect-sql@project-id.iam.gserviceaccount.com
+ 
