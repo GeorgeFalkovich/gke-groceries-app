@@ -14,11 +14,25 @@ spec:
       labels:
         app: groceries-backend
     spec:
+      serviceAccountName: sql-ksa
       containers:
         - name: groceries-backend
-          image: us-central1-docker.pkg.dev/georgef-sandbox/groceries
+          image: us-central1-docker.pkg.dev/georgef-sandbox/groceries/groceries-backend-cloud-sql-proxy:latest
           ports:
             - containerPort: 5000
+          env:
+            - name: DB_HOST
+              value: "127.0.0.1"
+            - name: DB_USER
+              value: "root"
+            - name: DB_PASSWORD
+              value: "root"
+            - name: DB_NAME
+              value: "exampledb"
+            - name: DB_PORT
+              value: "3306"
+            - name: CORS_ORIGIN
+              value: "http://host.docker.internal:3000"
           resources:
             limits:
               cpu: "500m"
