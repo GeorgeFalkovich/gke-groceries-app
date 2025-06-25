@@ -5,7 +5,7 @@ metadata:
   labels:
     app: groceries-backend
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: groceries-backend
@@ -15,6 +15,21 @@ spec:
         app: groceries-backend
     spec:
       serviceAccountName: sql-ksa
+      initContainers:
+        - name: cloud-sql-proxy
+          restartPolicy: Always
+          image: gcr.io/cloud-sql-connectors/cloud-sql-proxy:2.14.1
+          args:
+            - "--private-ip"
+            - "--structured-logs"
+            - "--port=3306"
+            - "georgef-sandbox:us-central1:sql-instance"
+          securityContext:
+            runAsNonRoot: true
+          resources:
+            requests:
+              memory: "2Gi"
+              cpu: "1"
       containers:
         - name: groceries-backend
           image: us-central1-docker.pkg.dev/georgef-sandbox/groceries/groceries-backend-cloud-sql-proxy:latest
@@ -40,15 +55,3 @@ spec:
             requests:
               cpu: "250m"
               memory: "256Mi"
-        - name: cloud-sql-proxy
-          image: gcr.io/cloudsql-docker/gce-proxy:latest
-          args:
-            - /cloud_sql_proxy
-            - -instances=georgef-sandbox:us-central1:sql-instance=tcp:3306
-          resources:
-            limits:
-              cpu: "200m"
-              memory: "128Mi"
-            requests:
-              cpu: "100m"
-              memory: "64Mi"
