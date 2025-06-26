@@ -21,13 +21,13 @@ ENV DB_HOST=host.docker.internal \
     DB_PASSWORD=root \
     DB_NAME=exampledb \
     DB_PORT=3306 \
-    CORS_ORIGIN=http://host.docker.internal:3000
+    CORS_ORIGIN=http://host.docker.internal
 
 # Expose port
-EXPOSE 5000
+EXPOSE 3307
 
 # Run the app
 CMD ["python", "api.py"]
 
 # docker build -t us-central1-docker.pkg.dev/georgef-sandbox/groceries/groceries-backend-cloud-sql-proxy .
-
+# docker push us-central1-docker.pkg.dev/georgef-sandbox/groceries/groceries-backend-cloud-sql-proxy
