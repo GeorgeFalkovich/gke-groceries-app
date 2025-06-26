@@ -38,7 +38,7 @@ jobs:
       - name: Set up kubectl
         uses: azure/setup-kubectl@v4
         with:
-          version: 'latest'
+          version: "latest"
 
       - name: Authenticate to GKE
         uses: google-github-actions/get-gke-credentials@v1
