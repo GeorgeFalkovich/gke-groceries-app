@@ -3,12 +3,15 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 
+const API_URL =
+  process.env.REACT_APP_API_URL || "http://groceries-backend/groceries";
+
 export default function App() {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
     axios
-      .get("http://127.0.0.1:5000/groceries")
+      .get(API_URL)
       .then((res) => setItems(res.data))
       .catch((err) => console.error(err));
   }, []);
