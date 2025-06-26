@@ -22,7 +22,7 @@ db_config = {
 
 @app.route('/', methods=['GET'])
 def hello():
-    return jsonify({'message': 'Welcome to the Grocery API!'})
+    return jsonify({'message': '!Welcome to the Grocery API!'})
 
 
 @app.route('/groceries', methods=['GET'])
