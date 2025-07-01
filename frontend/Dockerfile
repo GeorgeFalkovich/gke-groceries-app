@@ -1,12 +1,11 @@
 # Stage 1: Build React app
 FROM node:20-alpine as build
 WORKDIR /app
-ENV REACT_APP_API_URL="groceries-backend/groceries"
+ENV REACT_APP_API_URL="http://groceries-backend/groceries"
 COPY package.json ./
 RUN npm install
 COPY . .
 RUN npm run build
-
 # Stage 2: Serve with Apache
 FROM httpd:2.4-alpine
 # Copy build output to Apache's public html directory
