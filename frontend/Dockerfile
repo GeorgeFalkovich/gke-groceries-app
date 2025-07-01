@@ -2,7 +2,7 @@
 FROM node:20-alpine as build
 WORKDIR /app
 ENV REACT_APP_API_URL="groceries-backend/groceries"
-COPY package.json package-lock.json ./
+COPY package.json ./
 RUN npm install
 COPY . .
 RUN npm run build
