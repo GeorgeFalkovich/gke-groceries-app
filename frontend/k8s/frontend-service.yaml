@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: groceries-frontend
+  labels:
+    app: groceries-frontend
+spec:
+  type: ClusterIP
+  selector:
+    app: groceries-frontend
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80

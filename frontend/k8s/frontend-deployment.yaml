@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: groceries-frontend
+  labels:
+    app: groceries-frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: groceries-frontend
+  template:
+    metadata:
+      labels:
+        app: groceries-frontend
+    spec:
+      containers:
+        - name: groceries-frontend
+          image: us-central1-docker.pkg.dev/georgef-sandbox/groceries/frontend
+          ports:
+            - containerPort: 80
+          env:
+            - name: REACT_APP_API_URL
+              value: "groceries-backend/groceries"
+          resources:
+            limits:
+              cpu: "250m"
+              memory: "256Mi"
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
