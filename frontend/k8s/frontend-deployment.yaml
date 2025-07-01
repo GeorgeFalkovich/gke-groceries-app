@@ -21,7 +21,7 @@ spec:
             - containerPort: 80
           env:
             - name: REACT_APP_API_URL
-              value: "groceries-backend/groceries"
+              value: "http://groceries-backend/groceries"
           resources:
             limits:
               cpu: "250m"
