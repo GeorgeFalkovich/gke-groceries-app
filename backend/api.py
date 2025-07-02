@@ -6,7 +6,7 @@ import os
 
 app = Flask(__name__)
 # 👈 enable CORS for all routes
-CORS(app, resources={r"/*": {"origins": "*"}})
+CORS(app)
 # MySQL DB config
 db_config = {
     'host': os.environ.get('DB_HOST', '127.0.0.1'),
@@ -16,12 +16,12 @@ db_config = {
     'port': int(os.environ.get('DB_PORT', 3306))
 }
 
-# GET all groceries
-
 
 @app.route('/', methods=['GET'])
 def hello():
     return jsonify({'message': 'Welcome to the Grocery API!'})
+
+# GET all groceries
 
 
 @app.route('/groceries', methods=['GET'])
