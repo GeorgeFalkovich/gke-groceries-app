@@ -32,6 +32,7 @@ spec:
               cpu: "1"
       containers:
         - name: groceries-backend
+          imagePullPolicy: Always
           image: us-central1-docker.pkg.dev/georgef-sandbox/groceries/groceries-backend-cloud-sql-proxy:latest
           ports:
             - containerPort: 5000
