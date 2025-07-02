@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
 import mysql.connector
-from flask_cors import CORS  # 👈 import
+from flask_cors import CORS, cross_origin  # 👈 import
 import os
 
 
@@ -19,6 +19,7 @@ db_config = {
 
 
 @app.route('/', methods=['GET'])
+@cross_origin()
 def hello():
     return jsonify({'message': 'Welcome to the Grocery API!'})
 
@@ -26,6 +27,7 @@ def hello():
 
 
 @app.route('/groceries', methods=['GET'])
+@cross_origin()
 def get_groceries():
     try:
         conn = mysql.connector.connect(**db_config)
