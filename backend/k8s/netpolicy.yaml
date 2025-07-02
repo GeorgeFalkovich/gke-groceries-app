@@ -1,0 +1,15 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: restrict-backend-access
+spec:
+  podSelector:
+    matchLabels:
+      app: groceries-backend
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              app: groceries-frontend
+  policyTypes:
+    - Ingress

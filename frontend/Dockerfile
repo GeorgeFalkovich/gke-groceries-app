@@ -1,7 +1,7 @@
 # Stage 1: Build React app
 FROM node:20-alpine as build
 WORKDIR /app
-ENV REACT_APP_API_URL="/api/groceries"
+ENV REACT_APP_API_URL="/api/groceries/"
 COPY package.json ./
 RUN npm install
 COPY . .
