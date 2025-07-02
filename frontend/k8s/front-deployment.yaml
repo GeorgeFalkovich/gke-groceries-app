@@ -31,7 +31,7 @@ spec:
               memory: "128Mi"
 
         - name: nginx-proxy
-          image: nginx:stable
+          image: nginx
           ports:
             - containerPort: 8080
           volumeMounts:
