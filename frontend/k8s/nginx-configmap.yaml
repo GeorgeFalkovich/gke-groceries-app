@@ -11,7 +11,7 @@ data:
         proxy_pass http://localhost:80;
       }
 
-      location /api/ {
+      location /api/groceries/ {
         proxy_pass http://groceries-backend/groceries;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
