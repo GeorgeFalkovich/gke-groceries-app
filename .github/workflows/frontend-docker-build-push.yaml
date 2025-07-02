@@ -60,4 +60,5 @@ jobs:
 
       - name: Deploy to GKE
         run: |
-          kubectl apply -f ./frontend/k8s
+          kubectl apply -f ./frontend/k8s/.
+          kubectl rollout restart deployment groceries-frontend
