@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-const API_URL = process.env.REACT_APP_API_URL || "/api/groceries";
+const API_URL = process.env.REACT_APP_API_URL || "/api/groceries/";
 
 export default function App() {
   const [items, setItems] = useState([]);

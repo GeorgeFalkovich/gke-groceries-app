@@ -25,7 +25,7 @@ def hello():
 # GET all groceries
 
 
-@app.route('/groceries', methods=['GET'])
+@app.route('/groceries/', methods=['GET'])
 def get_groceries():
     try:
         conn = mysql.connector.connect(**db_config)
