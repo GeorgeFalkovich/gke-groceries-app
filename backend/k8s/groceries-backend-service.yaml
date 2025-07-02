@@ -5,7 +5,7 @@ metadata:
   labels:
     app: groceries-backend
 spec:
-  type: ClusterIP
+  type: LoadBalancer
   selector:
     app: groceries-backend
   ports:
