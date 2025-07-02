@@ -4,7 +4,7 @@ import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const API_URL =
-  process.env.REACT_APP_API_URL || "http://groceries-backend/groceries";
+  process.env.REACT_APP_API_URL || "http://34.118.235.3/groceries";
 
 export default function App() {
   const [items, setItems] = useState([]);
