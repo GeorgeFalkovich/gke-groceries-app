@@ -50,7 +50,7 @@ spec:
             - name: DB_PORT
               value: "3306"
             - name: CORS_ORIGIN
-              value: "http://host.docker.internal:3000"
+              value: "*"
           resources:
             limits:
               cpu: "500m"

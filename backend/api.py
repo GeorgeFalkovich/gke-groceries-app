@@ -6,8 +6,7 @@ import os
 
 app = Flask(__name__)
 # 👈 enable CORS for all routes
-CORS(app, origins=[os.environ.get('CORS_ORIGIN', "http://localhost:3000")])
-
+CORS(app, resources={r"/*": {"origins": "*"}})
 # MySQL DB config
 db_config = {
     'host': os.environ.get('DB_HOST', '127.0.0.1'),
