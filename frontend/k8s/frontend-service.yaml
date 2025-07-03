@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: groceries-frontend
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   selector:
     app: groceries-frontend
   ports:
