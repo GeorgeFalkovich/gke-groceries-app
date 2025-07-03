@@ -1,13 +1,13 @@
 from flask import Flask, request, jsonify
 import mysql.connector
-from flask_cors import CORS  # 👈 import
+from flask_cors import CORS, cross_origin  # 👈 import
 import os
 
 
 app = Flask(__name__)
 # 👈 enable CORS for all routes
-CORS(app, origins=[os.environ.get('CORS_ORIGIN', "http://localhost:3000")])
-
+cors_origin = os.environ.get("CORS_ORIGIN", "*")
+CORS(app, origins=cors_origin, supports_credentials=True)
 # MySQL DB config
 db_config = {
     'host': os.environ.get('DB_HOST', '127.0.0.1'),
@@ -17,15 +17,15 @@ db_config = {
     'port': int(os.environ.get('DB_PORT', 3306))
 }
 
-# GET all groceries
-
 
 @app.route('/', methods=['GET'])
 def hello():
     return jsonify({'message': '!Welcome to the Grocery API!'})
 
+# GET all groceries
 
-@app.route('/groceries', methods=['GET'])
+
+@app.route('/groceries/', methods=['GET'])
 def get_groceries():
     try:
         conn = mysql.connector.connect(**db_config)

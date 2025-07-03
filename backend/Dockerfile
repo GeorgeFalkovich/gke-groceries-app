@@ -18,10 +18,9 @@ ENV FLASK_RUN_HOST=0.0.0.0
 # Database config as environment variables
 ENV DB_HOST=host.docker.internal \
     DB_USER=root \
-    DB_PASSWORD=root \
+    # DB_PASSWORD=root \
     DB_NAME=exampledb \
-    DB_PORT=3306 \
-    CORS_ORIGIN=http://host.docker.internal
+    DB_PORT=3306 
 
 # Expose port
 EXPOSE 3307

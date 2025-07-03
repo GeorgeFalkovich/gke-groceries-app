@@ -32,6 +32,7 @@ spec:
               cpu: "1"
       containers:
         - name: groceries-backend
+          imagePullPolicy: Always
           image: us-central1-docker.pkg.dev/georgef-sandbox/groceries/groceries-backend-cloud-sql-proxy:latest
           ports:
             - containerPort: 5000
@@ -50,7 +51,7 @@ spec:
             - name: DB_PORT
               value: "3306"
             - name: CORS_ORIGIN
-              value: "http://host.docker.internal:3000"
+              value: "*"
           resources:
             limits:
               cpu: "500m"

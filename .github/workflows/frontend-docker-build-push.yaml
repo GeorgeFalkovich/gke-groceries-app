@@ -1,4 +1,4 @@
-name: Build and Deploy Backend
+name: Build and Deploy Frontend
 
 on:
   push:
@@ -10,8 +10,8 @@ env:
   PROJECT_ID: georgef-sandbox
   REGION: us-central1
   REPO: groceries
-  IMAGE_NAME: groceries-backend-cloud-sql-proxy
-  IMAGE_URI: us-central1-docker.pkg.dev/georgef-sandbox/groceries/groceries-backend-cloud-sql-proxy
+  IMAGE_NAME: frontend
+  IMAGE_URI: us-central1-docker.pkg.dev/georgef-sandbox/groceries/frontend
 
 jobs:
   build-and-push:
@@ -36,7 +36,7 @@ jobs:
 
       - name: Build and Push Docker image
         run: |
-          docker build -t ${{ env.IMAGE_URI }} ./backend
+          docker build -t ${{ env.IMAGE_URI }} ./frontend
           docker push ${{ env.IMAGE_URI }}
 
   deploy-to-gke:
@@ -47,7 +47,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           sparse-checkout: |
-            backend/k8s
+            frontend/k8s
           sparse-checkout-cone-mode: false
 
       - name: Authenticate to Google Cloud
@@ -74,5 +74,5 @@ jobs:
 
       - name: Deploy to GKE
         run: |
-          kubectl apply -f backend/k8s/
-          kubectl rollout restart deployment groceries-backend
+          kubectl apply -f frontend/k8s/
+          kubectl rollout restart deployment groceries-frontend

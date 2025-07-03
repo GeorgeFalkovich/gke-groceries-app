@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: groceries-frontend
+spec:
+  type: LoadBalancer
+  selector:
+    app: groceries-frontend
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080 # <-- nginx-proxy listens here
