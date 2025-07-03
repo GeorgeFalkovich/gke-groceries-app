@@ -4,8 +4,8 @@ metadata:
   name: groceries-frontend-ingress
   annotations:
     kubernetes.io/ingress.global-static-ip-name: gke-ingress-ip
+    kubernetes.io/ingress.class: "gce"
 spec:
-  ingressClassName: gce
   rules:
     - host: groceries.george-falkovich.com
       http:
