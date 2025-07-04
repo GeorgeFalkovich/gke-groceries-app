@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: groceries-frontend
+  namespace: dev
   labels:
     app: groceries-frontend
 spec:

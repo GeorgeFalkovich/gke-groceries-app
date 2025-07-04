@@ -43,6 +43,8 @@ jobs:
   deploy-to-gke:
     runs-on: ubuntu-latest
     needs: build-and-push
+    env:
+      NAMESPACE: ${{ github.ref == 'refs/heads/main' && 'prod' || 'dev' }}
     steps:
       - name: Checkout only manifests
         uses: actions/checkout@v4
@@ -73,7 +75,11 @@ jobs:
           location: ${{ secrets.GKE_CLUSTER_LOCATION }}
           project_id: ${{ env.PROJECT_ID }}
 
-      - name: Deploy to GKE
+      - name: Substitute namespace and apply manifests
         run: |
-          kubectl apply -f frontend/k8s/
-          kubectl rollout restart deployment groceries-frontend
+          for f in frontend/k8s/*.yaml; do
+            envsubst < $f | kubectl apply -f -
+          done
+          kubectl rollout restart deployment groceries-frontend -n $NAMESPACE
+        env:
+          NAMESPACE: ${{ env.NAMESPACE }}
