@@ -5,7 +5,8 @@ on:
     branches:
       - main
       - dev
-
+    paths:
+      - "backend/**"
 env:
   PROJECT_ID: georgef-sandbox
   REGION: us-central1

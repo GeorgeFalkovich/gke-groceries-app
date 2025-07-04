@@ -1,4 +1,3 @@
-// App.jsx
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -17,7 +16,14 @@ export default function App() {
 
   return (
     <div className="container py-4">
-      <h1 className="mb-4 fw-bold">Most ordered</h1>
+      <div className="d-flex justify-content-between align-items-center mb-4">
+        <h1 className="fw-bold">Most ordered</h1>
+        <div>
+          <button className="btn btn-outline-primary me-2">Login</button>
+          <button className="btn btn-primary">Signup</button>
+        </div>
+      </div>
+
       <div className="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
         {items.map((item, idx) => (
           <div key={idx} className="col">
