@@ -1,4 +1,6 @@
 backend/myenv
+frontend/src/firebase/config.js
+frontend/src/firebase/config.js
 creds
 frontend/node_modules
 frontend/build
@@ -9,5 +11,6 @@ frontend/.env.production
 frontend/.env.test
 frontend/.env.development.local
 frontend/package-lock.json
-
+backend/.DS_Store
+frontend/.DS_Store
 .github/.DS_store

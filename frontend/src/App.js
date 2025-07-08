@@ -35,23 +35,23 @@ export default function App() {
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      // Закрываем формы если пользователь залогинился
+      // Close form if user is logged in
       if (currentUser) {
         setShowLogin(false);
         setShowSignup(false);
       }
     });
-    return () => unsub();
+    // return () => unsub();
   }, []);
 
   return (
     <div className="container py-4">
       {/* ─────────────────────────────────────────────────────── */}
-      {/* Шапка */}
+      {/* Hat */}
       <div className="d-flex justify-content-between align-items-center mb-4">
         <h1 className="fw-bold">Most ordered</h1>
 
-        {/* ⚡ Переключаем кнопки в зависимости от логина */}
+        {/* ⚡ Switch buttons according to login/logut */}
         {user ? (
           <div className="d-flex align-items-center gap-3">
             <span className="fw-semibold text-muted">{user.email}</span>
@@ -81,7 +81,7 @@ export default function App() {
       </div>
 
       {/* ─────────────────────────────────────────────────────── */}
-      {/* Список товаров */}
+      {/* Groceries */}
       <div className="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
         {items.map((item, idx) => (
           <div key={idx} className="col">
@@ -105,7 +105,7 @@ export default function App() {
       </div>
 
       {/* ─────────────────────────────────────────────────────── */}
-      {/* Модальные формы логина/регистрации (простейшая реализация) */}
+      {/* Modal form of login */}
       {showLogin && (
         <div className="position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 d-flex align-items-center justify-content-center">
           <div className="bg-white p-4 rounded shadow">

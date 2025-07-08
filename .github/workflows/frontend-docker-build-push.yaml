@@ -1,9 +1,8 @@
 name: Build and Deploy Frontend
-
 on:
   push:
     branches:
-      - main
+      # - main
       - dev
     paths:
       - "frontend/**"
@@ -20,6 +19,15 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Create .env file
+        run: |
+          echo "REACT_APP_FIREBASE_API_KEY=${{ secrets.REACT_APP_FIREBASE_API_KEY }}" >> frontend/.env
+          echo "REACT_APP_FIREBASE_AUTH_DOMAIN=${{ secrets.REACT_APP_FIREBASE_AUTH_DOMAIN }}" >> frontend/.env
+          echo "REACT_APP_FIREBASE_PROJECT_ID=${{ secrets.REACT_APP_FIREBASE_PROJECT_ID }}" >> frontend/.env
+          echo "REACT_APP_FIREBASE_STORAGE_BUCKET=${{ secrets.REACT_APP_FIREBASE_STORAGE_BUCKET }}" >> frontend/.env
+          echo "REACT_APP_FIREBASE_MESSAGING_SENDER_ID=${{ secrets.REACT_APP_FIREBASE_MESSAGING_SENDER_ID }}" >> frontend/.env
+          echo "REACT_APP_FIREBASE_APP_ID=${{ secrets.REACT_APP_FIREBASE_APP_ID }}" >> frontend/.env
 
       - name: Authenticate to Google Cloud
         uses: google-github-actions/auth@v1
@@ -43,8 +51,6 @@ jobs:
   deploy-to-gke:
     runs-on: ubuntu-latest
     needs: build-and-push
-    env:
-      NAMESPACE: ${{ github.ref == 'refs/heads/main' && 'prod' || 'dev' }}
     steps:
       - name: Checkout only manifests
         uses: actions/checkout@v4
@@ -75,11 +81,8 @@ jobs:
           location: ${{ secrets.GKE_CLUSTER_LOCATION }}
           project_id: ${{ env.PROJECT_ID }}
 
-      - name: Substitute namespace and apply manifests
+      - name: Deploy to GKE
         run: |
-          for f in frontend/k8s/*.yaml; do
-            envsubst < $f | kubectl apply -f -
-          done
-          kubectl rollout restart deployment groceries-frontend -n $NAMESPACE
-        env:
-          NAMESPACE: ${{ env.NAMESPACE }}
+          kubectl apply -f frontend/k8s/
+          kubectl rollout restart deployment groceries-frontend
+nd
