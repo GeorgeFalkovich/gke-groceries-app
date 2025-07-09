@@ -41,7 +41,7 @@ def get_groceries():
         if 'conn' in locals():
             conn.close()
 
-# POST: insert a new grocery item to DB
+# POST: insert a new grocery item to cloud-sql DB
 
 
 @app.route('/groceries', methods=['POST'])
