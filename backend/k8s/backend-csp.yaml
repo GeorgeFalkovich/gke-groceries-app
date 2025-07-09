@@ -53,10 +53,10 @@ spec:
               value: "3306"
             - name: CORS_ORIGIN
               value: "*"
-          # resources:
-          #   limits:
-          #     cpu: "200m"
-          #     memory: "200Mi"
-          #   requests:
-          #     cpu: "250m"
-          #     memory: "256Mi"
+          resources:
+            limits:
+              cpu: "200m"
+              memory: "256Mi"
+            requests:
+              cpu: "100m"
+              memory: "100Mi"
