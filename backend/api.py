@@ -41,7 +41,7 @@ def get_groceries():
         if 'conn' in locals():
             conn.close()
 
-# POST a new grocery item
+# POST: insert a new grocery item
 
 
 @app.route('/groceries', methods=['POST'])

@@ -17,8 +17,7 @@ export default function App() {
   // This will hold the list of grocery items fetched from the backend. Initially, it's an empty array
   const [items, setItems] = useState([]);
 
-  // User authentication state
-  // This will hold the current user object if logged in, or null if not
+  // User authentication state. This will hold the current user object if logged in, or null if not
   const [user, setUser] = useState(null);
   const [showLogin, setShowLogin] = useState(false);
   const [showSignup, setShowSignup] = useState(false);

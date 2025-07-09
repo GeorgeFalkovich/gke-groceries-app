@@ -19,6 +19,10 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            frontend
+          sparse-checkout-cone-mode: false
 
       - name: Create .env file
         run: |
