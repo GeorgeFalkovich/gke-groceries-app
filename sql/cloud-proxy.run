@@ -12,6 +12,6 @@ kubectl create sa sql-ksa
 
 gcloud iam service-accounts add-iam-policy-binding \
 --role="roles/iam.workloadIdentityUser" \
---member="serviceAccount:project-id.svc.id.goog[default/sql-ksa]" \
+--member="serviceAccount:project-id.svc.id.goog[dev/sql-ksa]" \
 cliect-sql@project-id.iam.gserviceaccount.com
  

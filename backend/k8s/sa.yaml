@@ -1,5 +1,7 @@
 apiVersion: v1
 kind: ServiceAccount
 metadata:
+  annotations:
+    iam.gke.io/gcp-service-account: cliect-sql@georgef-sandbox.iam.gserviceaccount.com
   name: sql-ksa
   namespace: dev
