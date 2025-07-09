@@ -29,8 +29,8 @@ spec:
             runAsNonRoot: true
           resources:
             requests:
-              memory: "2Gi"
-              cpu: "1"
+              memory: "528Mi"
+              cpu: "250m"
       containers:
         - name: groceries-backend
           imagePullPolicy: Always
