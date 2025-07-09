@@ -18,6 +18,7 @@ spec:
       containers:
         - name: groceries-frontend
           image: us-central1-docker.pkg.dev/georgef-sandbox/groceries/frontend
+          imagePullPolicy: Always
           ports:
             - containerPort: 80
           env:
