@@ -1,6 +1,12 @@
 # Use official Python image
 FROM python:3.13-slim
 
+# Install debugging tools
+RUN apt-get update && \
+    apt-get install -y procps iproute2 net-tools && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
 # Set work directory
 WORKDIR /app
 
