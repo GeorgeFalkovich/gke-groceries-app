@@ -14,8 +14,7 @@ const API_URL = process.env.REACT_APP_API_URL || "/api/groceries/";
 
 export default function App() {
   // Grocery items state
-  // This will hold the list of grocery items fetched from the backend
-  // Initially, it's an empty array
+  // This will hold the list of grocery items fetched from the backend. Initially, it's an empty array
   const [items, setItems] = useState([]);
 
   // User authentication state
