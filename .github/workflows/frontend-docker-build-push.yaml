@@ -14,6 +14,7 @@ env:
   IMAGE_URI: us-central1-docker.pkg.dev/georgef-sandbox/groceries/frontend
 
 jobs:
+  # CI
   build-and-push:
     runs-on: ubuntu-latest
     steps:
@@ -53,6 +54,7 @@ jobs:
           docker push ${{ env.IMAGE_URI }}
 
   deploy-to-gke:
+    # CD
     runs-on: ubuntu-latest
     needs: build-and-push
     steps:
@@ -87,4 +89,4 @@ jobs:
       - name: Deploy to GKE
         run: |
           kubectl apply -f frontend/k8s/
-          kubectl rollout restart deployment groceries-frontend
+          kubectl rollout restart deployment groceries-frontend --namespace=dev

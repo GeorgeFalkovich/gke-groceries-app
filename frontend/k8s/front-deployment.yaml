@@ -22,7 +22,7 @@ spec:
             - containerPort: 80
           env:
             - name: REACT_APP_API_URL
-              value: "/api/groceries" # <-- changed to relative path
+              value: "/api/groceries" # <-- api to flask backend
           resources:
             limits:
               cpu: "250m"
