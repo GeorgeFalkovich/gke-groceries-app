@@ -85,4 +85,3 @@ jobs:
         run: |
           kubectl apply -f frontend/k8s/
           kubectl rollout restart deployment groceries-frontend
-nd
