@@ -2,6 +2,7 @@ apiVersion: networking.gke.io/v1
 kind: ManagedCertificate
 metadata:
   name: groceries-ssl-cert
+  namespace: dev
 spec:
   domains:
     - groceries.george-falkovich.com
