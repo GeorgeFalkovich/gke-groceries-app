@@ -9,14 +9,12 @@ assign ksa + gcp sa
 https://cloud.google.com/sql/docs/mysql/connect-kubernetes-engine#workload-identity
 
 kubectl create sa sql-ksa
-
-gcloud iam service-accounts add-iam-policy-binding \
---role="roles/iam.workloadIdentityUser" \
---member="serviceAccount:project-id.svc.id.goog[default/sql-ksa]" \
-cliect-sql@project-id.iam.gserviceaccount.com
  
 
-gcloud projects add-iam-policy-binding projects/georgef-sandbox \
---role=roles/container.clusterViewer \
---member=principal://iam.googleapis.com/projects/541704241308/locations/global/workloadIdentityPools/georgef-sandbox.svc.id.goog/subject/ns/dev/sa/sql-ksa \
---condition=None
+gcloud iam service-accounts add-iam-policy-binding cliect-sql@georgef-sandbox.iam.gserviceaccount.com \
+  --role roles/iam.workloadIdentityUser \
+  --member "serviceAccount:georgef-sandbox.svc.id.goog[dev/sql-ksa]"
+
+
+  gcloud container clusters describe my-gke-cluster --zone=us-central1-a --project=georgef-sandbox \
+  --format="value(workloadIdentityConfig.workloadPool)"
