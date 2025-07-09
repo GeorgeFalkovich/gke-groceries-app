@@ -2,7 +2,6 @@ from flask import Flask, request, jsonify
 import mysql.connector
 from flask_cors import CORS  # 👈 import
 
-
 app = Flask(__name__)
 CORS(app, origins=["http://localhost:3000"])  # 👈 enable CORS for all routes
 
