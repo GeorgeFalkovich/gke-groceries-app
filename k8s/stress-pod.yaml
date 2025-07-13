@@ -1,0 +1,85 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: stress-test-tools
+  labels:
+    app: stress-test
+spec:
+  # restartPolicy: Never - If you want the pod to terminate after installation and not restart.
+  # restartPolicy: OnFailure - If you want the pod to restart only in case of failure.
+  # restartPolicy: Always - If you want the pod to always remain running and restart on any failures.
+  # For this scenario, where we want to connect and use the tools, 'Always' or 'OnFailure' is suitable.
+  # I am using 'Always' and 'sleep infinity' in the command to keep the pod running.
+  restartPolicy: Always
+  containers:
+    - name: stress-tester
+      image: ubuntu:latest
+      imagePullPolicy: Always # Always pull the latest image
+      command: ["/bin/bash", "-c"]
+      args:
+        - |
+          # Update package list
+          echo "--- Updating package list ---"
+          apt update -y
+
+          # Install core utilities and dependencies
+          echo "--- Installing core utilities and dependencies ---"
+          apt install -y curl wget tar apache2-utils gnupg openjdk-11-jdk python3 python3-pip nodejs npm
+
+          # Install Siege (often included with apache2-utils, but explicit installation doesn't hurt)
+          echo "--- Installing Siege ---"
+          apt install -y siege
+
+          # Install Vegeta
+          echo "--- Installing Vegeta ---"
+          VEGETA_VERSION="6.3.0" # Check the actual version on GitHub
+          curl -L "https://github.com/tsenart/vegeta/releases/download/v${VEGETA_VERSION}/vegeta-v${VEGETA_VERSION}-linux-386.tar.gz" -o vegeta.tar.gz
+          tar -xvzf vegeta.tar.gz
+          mv vegeta /usr/local/bin/vegeta
+          rm vegeta.tar.gz
+
+          # Install Apache Benchmark (ab) - already installed with apache2-utils
+          echo "--- Apache Benchmark (ab) is part of apache2-utils ---"
+
+          # Install JMeter
+          echo "--- Installing JMeter ---"
+          JMETTER_VERSION="5.6.3" # Check the actual version on Apache JMeter Downloads website
+          wget "https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-${JMETTER_VERSION}.tgz"
+          tar -xvzf "apache-jmeter-${JMETTER_VERSION}.tgz"
+          mv "apache-jmeter-${JMETTER_VERSION}" /opt/jmeter
+          # Add JMeter to PATH for the current session and future exec sessions
+          echo 'export PATH=$PATH:/opt/jmeter/bin' >> ~/.bashrc
+          export PATH=$PATH:/opt/jmeter/bin
+
+          # Install k6
+          echo "--- Installing k6 ---"
+          # Add k6 GPG key
+          curl -fsSL https://deb.k6.io/gpg | gpg --dearmor -o /usr/share/keyrings/k6-archive-keyring.gpg
+          # Add k6 repository
+          echo "deb [signed-by=/usr/share/keyrings/k6-archive-keyring.gpg] https://dl.k6.io/deb stable main" | tee /etc/apt/sources.list.d/k6.list
+          apt update -y
+          apt install -y k6
+
+          # Install Locust
+          echo "--- Installing Locust ---"
+          pip3 install locust
+
+          # Install Artillery
+          echo "--- Installing Artillery ---"
+          # Install Node.js 18.x (if not already installed with apt install nodejs)
+          # This step might be redundant if 'nodejs' from apt is already new enough,
+          # but ensures a specific version if required.
+          # curl -fsSL https://deb.nodesource.com/setup_18.x | bash -
+          # apt-get install -y nodejs
+          npm install -g artillery
+
+          echo "--- All stress test tools installation complete. Pod will now stay running. ---"
+          # Command that does not terminate, so the pod remains in a Running state
+          sleep infinity
+      resources:
+        requests:
+          memory: "1Gi"
+          cpu: "1"
+        limits:
+          memory: "2Gi"
+          cpu: "2"
